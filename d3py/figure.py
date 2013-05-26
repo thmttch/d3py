@@ -69,6 +69,7 @@ class Figure(object):
         # Networking stuff
         self.host = host
         self.port = port
+        self.outport = kwargs['outport']
         self._server_thread = None
         self.httpd = None
 
@@ -264,7 +265,7 @@ class Figure(object):
         '''Save HTML data. Will save Figure name to 'name.html'. Will also
         replace {{ port }} and {{ host }} fields in template with
         Figure.port and Figure.host '''
-        self.html = self.html.replace("{{ port }}", str(self.port))
+        self.html = self.html.replace("{{ port }}", str(self.outport))
         self.html = self.html.replace("{{ host }}", str(self.host))
         # write html
         filename = "%s.html"%self.name
